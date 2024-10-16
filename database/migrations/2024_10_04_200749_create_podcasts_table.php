@@ -12,12 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('podcasts', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->id()->primary();
             $table->timestamps();
             $table->string('name');
             $table->string('description');
-            $table->string('creator');
-            $table->string('studio');
             $table->string("logoUrl");
         });
     }

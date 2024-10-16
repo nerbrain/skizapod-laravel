@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Podcast extends Model
 {
-    use HasFactory, HasUuids;
+    use HasFactory;
 
     protected $fillable =
     [
@@ -18,9 +18,4 @@ class Podcast extends Model
         'description',
         'logoURL'
     ];
-
-    public function podcastEpisode(): HasMany{
-        return $this -> hasMany(PodcastEpisodes::class);
-    }
-
 }

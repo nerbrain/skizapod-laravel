@@ -7,17 +7,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class PodcastEpisodes extends Model
+class PodcastEpisode extends Model
 {
-    use HasFactory, HasUuids;
+    use HasFactory;
 
     protected $fillable =
     [
+        'podcast_id',
         'name',
         'description',
         'url',
-        'duration',
-        'artworkUrl'
+        'imageURL'
     ];
 
     public function podcast(): BelongsTo{
