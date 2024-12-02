@@ -2,17 +2,18 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\PodcastResource\Pages;
-use App\Models\Podcast;
+use App\Filament\Resources\GenreResource\Pages;
+use App\Models\Genre;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 
-class PodcastResource extends Resource
+
+class GenreResource extends Resource
 {
-    protected static ?string $model = Podcast::class;
+    protected static ?string $model = Genre::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -20,11 +21,7 @@ class PodcastResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('genre_id')
-                    ->relationship(name:'genre', titleAttribute:'name'),
-                Forms\Components\TextInput::make('name'),
-                Forms\Components\TextInput::make('description'),
-                Forms\Components\TextInput::make('logoURL'),
+                Forms\Components\TextInput::make('name')
             ]);
     }
 
@@ -32,8 +29,7 @@ class PodcastResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\TextColumn::make('description'),
+                Tables\Columns\TextColumn::make('name')
             ])
             ->filters([
                 //
@@ -58,9 +54,9 @@ class PodcastResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListPodcasts::route('/'),
-            'create' => Pages\CreatePodcast::route('/create'),
-            'edit' => Pages\EditPodcast::route('/{record}/edit'),
+            'index' => Pages\ListGenres::route('/'),
+            'create' => Pages\CreateGenre::route('/create'),
+            'edit' => Pages\EditGenre::route('/{record}/edit'),
         ];
     }
 }
